@@ -1,5 +1,10 @@
 import express, { Express, Request, Response } from "express";
 import mongoose from "mongoose";
+
+//use to protect API password via .env file
+import { config } from "dotenv";
+config();
+
 import Receipt from "./models/receipt";
 
 const PORT = 5000;
@@ -20,11 +25,7 @@ app.post("/receipts", async (req: Request, res: Response) => {
   res.json(createdReceipt);
 });
 
-mongoose
-  .connect(
-    "mongodb+srv://splitstorage:storagesplit@cluster0.ut217zc.mongodb.net/?retryWrites=true&w=majority"
-  )
-  .then(() => {
-    console.log("Listening on port 5000");
-    app.listen(PORT);
-  });
+mongoose.connect(process.env.MONGO_URL!).then(() => {
+  console.log("Listening on port 5000");
+  app.listen(PORT);
+});
