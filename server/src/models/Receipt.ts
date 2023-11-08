@@ -5,7 +5,12 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 const ReceiptSchema = new Schema({
-  receiptID: String, // String is shorthand for {type: String}
+  phoneNumber: String,
+  customerName: String,
+  orders: Array<String>,
+
+  //receiptID: String,
+  //testId: String, // String is shorthand for {type: String}
   //date: { type: Date, default: Date.now },
 });
 
