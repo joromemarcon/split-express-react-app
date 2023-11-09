@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./App.css";
 import { MouseEvent } from "react";
+import { useNavigate } from "react-router-dom";
 
 let dummyCustomerOne = {
   phoneNumber: "6191112222",
@@ -13,11 +14,12 @@ let dummyCustomerTwo = {
   customerName: "John Doe",
   orders: ["burger", "fries", "soda", "steak"],
 };
-let counter = 0;
+let counter = 0; //counter to add dummy receipts
 
 function App() {
   const [phone, setPhone] = useState("");
-  const [test, setTest] = useState(Array<String>);
+  const [items, setItems] = useState(Array<String>);
+  const navigate = useNavigate();
 
   async function handleMouseEvent(e: MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
@@ -50,16 +52,18 @@ function App() {
     async function fetchReceipt() {
       const response = await fetch(`http://localhost:5000/receipts/${phone}`);
       const customerResult = await response.json();
-      setTest(customerResult[0].orders);
+      setItems(customerResult[0].orders);
     }
     fetchReceipt();
+    //navigate to Itemize page
+    navigate(`/receipts/${phone}`);
   }
 
   return (
     <>
       <div className="App">
         <ul>
-          {test.map((items, index) => (
+          {items.map((items, index) => (
             <li key={index}>{items}</li>
           ))}
         </ul>
