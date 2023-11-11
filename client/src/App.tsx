@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import { MouseEvent } from "react";
 import { useNavigate } from "react-router-dom";
+import { createReceipt } from "./api/createReceipt";
 
 let dummyCustomerOne = {
   phoneNumber: "6191112222",
@@ -18,7 +19,7 @@ let counter = 0; //counter to add dummy receipts
 
 function App() {
   const [phone, setPhone] = useState("");
-  const [items, setItems] = useState(Array<String>);
+
   const navigate = useNavigate();
 
   async function handleMouseEvent(e: MouseEvent<HTMLButtonElement>) {
@@ -26,48 +27,29 @@ function App() {
     counter++;
 
     if (counter == 1) {
-      fetch("http://localhost:5000/receipts", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          phoneNumber: dummyCustomerOne.phoneNumber,
-          customerName: dummyCustomerOne.customerName,
-          orders: dummyCustomerOne.orders,
-        }),
-      });
+      createReceipt(
+        dummyCustomerOne.phoneNumber,
+        dummyCustomerOne.customerName,
+        dummyCustomerOne.orders
+      );
     } else if (counter == 2) {
-      fetch("http://localhost:5000/receipts", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          phoneNumber: dummyCustomerTwo.phoneNumber,
-          customerName: dummyCustomerTwo.customerName,
-          orders: dummyCustomerTwo.orders,
-        }),
-      });
+      createReceipt(
+        dummyCustomerTwo.phoneNumber,
+        dummyCustomerTwo.customerName,
+        dummyCustomerTwo.orders
+      );
     }
   }
   async function handleRetrieveReceipt(e: React.FormEvent) {
     e.preventDefault();
-    async function fetchReceipt() {
-      const response = await fetch(`http://localhost:5000/receipts/${phone}`);
-      const customerResult = await response.json();
-      setItems(customerResult[0].orders);
-    }
-    fetchReceipt();
-    //navigate to Itemize page
+
     navigate(`/receipts/${phone}`);
   }
 
   return (
     <>
       <div className="App">
-        <ul>
-          {items.map((items, index) => (
-            <li key={index}>{items}</li>
-          ))}
-        </ul>
-        <form>
+        <form onSubmit={handleRetrieveReceipt}>
           <label>
             Customer Phone Number:
             <input
@@ -78,9 +60,7 @@ function App() {
               }}
             />
           </label>
-          <button type="submit" onClick={handleRetrieveReceipt}>
-            Submit
-          </button>
+          <button type="submit">Submit</button>
         </form>
         <button className="btn-large" onClick={handleMouseEvent}>
           Click to Add Receipts

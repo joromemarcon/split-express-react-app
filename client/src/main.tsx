@@ -3,11 +3,11 @@ import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
-import Itemize from "./Itemize.tsx";
+import Itemize from "./components/Itemize.tsx";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/receipts",
     element: <App />,
   },
   {
