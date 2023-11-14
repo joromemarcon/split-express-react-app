@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import Itemize from "./components/Itemize.tsx";
-import HomePage from "./components/HomePage.tsx";
+import HomePage from "./components/HomePage/HomePage.tsx";
 import Payee from "./components/Payee.tsx";
 
 const router = createBrowserRouter([
