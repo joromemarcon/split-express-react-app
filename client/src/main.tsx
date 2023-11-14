@@ -1,14 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.tsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import Itemize from "./components/Itemize.tsx";
+import HomePage from "./components/HomePage.tsx";
+import Payee from "./components/Payee.tsx";
 
 const router = createBrowserRouter([
+  { path: "/", element: <HomePage /> },
   {
     path: "/receipts",
-    element: <App />,
+    element: <Payee />,
   },
   {
     path: "/receipts/:phoneNumber",

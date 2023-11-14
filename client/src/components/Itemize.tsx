@@ -29,7 +29,6 @@ function Itemize() {
 
   return (
     <div>
-      <div></div>
       <ul>
         {items.map((item, index) => (
           <li key={index}>{item}</li>
