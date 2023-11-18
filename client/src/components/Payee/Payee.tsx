@@ -1,9 +1,8 @@
 import { useState } from "react";
-import "../App.css";
 import { MouseEvent } from "react";
 import { useNavigate } from "react-router-dom";
-import { createReceipt } from "../api/createReceipt";
-import NavigationBar from "./Navigation/NavigationBar";
+import { createReceipt } from "../../api/createReceipt";
+import NavigationBar from "../Navigation/NavigationBar";
 
 let dummyCustomerOne = {
   phoneNumber: "6191112222",
@@ -61,6 +60,9 @@ function Payee() {
                 setPhone(e.target.value);
               }}
             />
+          </label>
+          <label>
+            <input />
           </label>
           <button type="submit">Submit</button>
         </form>

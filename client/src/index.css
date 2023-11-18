@@ -9,6 +9,9 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+body{
+  background-color:  #34A8FA;
+}
 
 button {
   border-radius: 8px;

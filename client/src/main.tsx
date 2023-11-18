@@ -4,7 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import Itemize from "./components/Itemize.tsx";
 import HomePage from "./components/HomePage/HomePage.tsx";
-import Payee from "./components/Payee.tsx";
+import Payee from "./components/Payee/Payee.tsx";
 
 const router = createBrowserRouter([
   { path: "/", element: <HomePage /> },

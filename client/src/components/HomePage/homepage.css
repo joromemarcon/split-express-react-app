@@ -1,0 +1,35 @@
+.mn-bg-img{
+    height: 600px;
+    width: 100%;
+    background-image: url("../../images/main-custom-blue-bg.png");
+    background-size: cover;
+}
+.mg h1{
+    color: #3445FA;
+    text-align: center;
+}
+.mg-spacer{
+    flex:1;
+    height: 100px; 
+    padding: 20px;
+    margin: 30px;
+    line-height: 100px; 
+}
+.mg-flex{
+    display: flex;
+}
+.mg-flex-child{
+    flex:1;
+    /*border:2px solid white;  remove later */
+    border-radius: 25px;
+    height: 150px; 
+    padding: 20px;
+    margin: 30px;
+    line-height: 100px; /*vertically aligns text (add: height, padding, margin*/
+    text-align: center;
+    background: radial-gradient(white,#b6d7ee);
+    /* background-color: #3445FA; */
+}
+.mg-flex-child:first-child{
+    margin-right: 20px;
+}
