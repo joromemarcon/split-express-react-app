@@ -18,8 +18,9 @@ function HomePage() {
       <main>
         <div className="mn-bg-img">
           <div className="mg">
-            <div className="mg-spacer"></div>
-            <h1>SPLIT</h1>
+            <div className="mg-logo-container">
+              <div id="mg-logo"></div>
+            </div>
             <div className="mg-flex">
               <div className="mg-flex-child" onClick={routeToPayorPage}>
                 View your bill

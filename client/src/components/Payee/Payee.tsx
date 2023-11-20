@@ -61,9 +61,6 @@ function Payee() {
               }}
             />
           </label>
-          <label>
-            <input />
-          </label>
           <button type="submit">Submit</button>
         </form>
         <button className="btn-large" onClick={handleMouseEvent}>

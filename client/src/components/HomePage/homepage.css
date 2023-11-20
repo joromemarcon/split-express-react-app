@@ -1,12 +1,27 @@
 .mn-bg-img{
+    
+    flex:1;
     height: 600px;
     width: 100%;
     background-image: url("../../images/main-custom-blue-bg.png");
     background-size: cover;
 }
-.mg h1{
-    color: #3445FA;
+.mg{
+    margin-top: 5%;
+}
+.mg-logo-container{
+    width:100%;
+    display: flex;
+    justify-content: center;
+}
+#mg-logo{
+    content: url("../../images/split-logo.png");
+    margin: 0px;
+    padding: 0px;
+    height: 200px;
+    width: 200px;
     text-align: center;
+    justify-content: center;
 }
 .mg-spacer{
     flex:1;
@@ -25,6 +40,7 @@
     height: 150px; 
     padding: 20px;
     margin: 30px;
+    margin-top: 10%;
     line-height: 100px; /*vertically aligns text (add: height, padding, margin*/
     text-align: center;
     background: radial-gradient(white,#b6d7ee);

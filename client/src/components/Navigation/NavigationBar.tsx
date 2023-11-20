@@ -8,7 +8,7 @@ function NavigationBar() {
   return (
     <nav>
       <Link to={"/"} className="site-title">
-        SPLIT
+        <div></div>
       </Link>
       <div
         className="menu"

@@ -10,6 +10,16 @@
 
  }
 
+ .site-title div{
+    content: url("../../images/split-logo.png");
+    margin: 0px;
+    padding: 0px;
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    justify-content: center;
+ }
+
 nav {
     height: 20%;
     display: flex;
@@ -26,6 +36,7 @@ nav .site-title{
     font-size: 2rem;
     margin: 1rem;
     font-weight: bold;
+    display: flex;
   }
 nav ul{
     display: flex;
