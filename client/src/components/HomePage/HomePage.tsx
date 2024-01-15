@@ -1,4 +1,3 @@
-import React from "react";
 import Header from "../Navigation/NavigationBar";
 import "./homepage.css";
 import { useNavigate } from "react-router-dom";
@@ -6,10 +5,10 @@ import { useNavigate } from "react-router-dom";
 function HomePage() {
   let navigate = useNavigate();
   const routeToPayeePage = () => {
-    navigate("/receipts");
+    navigate("/host");
   };
   const routeToPayorPage = () => {
-    navigate("/receipts");
+    navigate("/payhost");
   };
 
   return (
@@ -23,10 +22,10 @@ function HomePage() {
             </div>
             <div className="mg-flex">
               <div className="mg-flex-child" onClick={routeToPayorPage}>
-                View your bill
+                Pay a friend
               </div>
               <div className="mg-flex-child" onClick={routeToPayeePage}>
-                Pay a friend
+                View existing bill
               </div>
               <div className="mg-flex-child" onClick={routeToPayeePage}>
                 Create new bill

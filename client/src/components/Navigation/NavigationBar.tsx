@@ -25,7 +25,10 @@ function NavigationBar() {
           <NavLink to={"/"}>Home</NavLink>
         </li>
         <li>
-          <NavLink to={"/receipts"}>Payee</NavLink>
+          <NavLink to={"/payhost"}>Payor</NavLink>
+        </li>
+        <li>
+          <NavLink to={"/host"}>Payee</NavLink>
         </li>
       </ul>
     </nav>

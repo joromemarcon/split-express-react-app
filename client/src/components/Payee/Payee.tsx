@@ -1,49 +1,17 @@
 import { useState } from "react";
-import { MouseEvent } from "react";
 import { useNavigate } from "react-router-dom";
-import { createReceipt } from "../../api/createReceipt";
 import NavigationBar from "../Navigation/NavigationBar";
-
-let dummyCustomerOne = {
-  phoneNumber: "6191112222",
-  customerName: "Jorome Marcon",
-  orders: ["sushi", "edemame", "soda", "poke"],
-};
-
-let dummyCustomerTwo = {
-  phoneNumber: "61933344444",
-  customerName: "John Doe",
-  orders: ["burger", "fries", "soda", "steak"],
-};
-let counter = 0; //counter to add dummy receipts
 
 function Payee() {
   const [phone, setPhone] = useState("");
+  const [lastName, setLastName] = useState("");
 
   const navigate = useNavigate();
 
-  async function handleMouseEvent(e: MouseEvent<HTMLButtonElement>) {
-    e.preventDefault();
-    counter++;
-
-    if (counter == 1) {
-      createReceipt(
-        dummyCustomerOne.phoneNumber,
-        dummyCustomerOne.customerName,
-        dummyCustomerOne.orders
-      );
-    } else if (counter == 2) {
-      createReceipt(
-        dummyCustomerTwo.phoneNumber,
-        dummyCustomerTwo.customerName,
-        dummyCustomerTwo.orders
-      );
-    }
-  }
   async function handleRetrieveReceipt(e: React.FormEvent) {
     e.preventDefault();
 
-    navigate(`/receipts/${phone}`);
+    navigate(`/host/${phone}/${lastName}`);
   }
 
   return (
@@ -52,7 +20,7 @@ function Payee() {
         <NavigationBar></NavigationBar>
         <form onSubmit={handleRetrieveReceipt}>
           <label>
-            Customer Phone Number:
+            Host's Phone Number:
             <input
               id="customer-phone"
               value={phone}
@@ -61,11 +29,20 @@ function Payee() {
               }}
             />
           </label>
-          <button type="submit">Submit</button>
+          <label>
+            Last Name:
+            <input
+              id="customer-ln"
+              value={lastName}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                setLastName(e.target.value);
+              }}
+            />
+          </label>
+          <button className="phn-sub-btn" type="submit">
+            Submit
+          </button>
         </form>
-        <button className="btn-large" onClick={handleMouseEvent}>
-          Click to Add Receipts
-        </button>
       </div>
     </>
   );

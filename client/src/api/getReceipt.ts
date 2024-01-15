@@ -2,7 +2,11 @@ export type TReceipt = {
   _id: string;
   phoneNumber: string;
   customerName: string;
-  orders: Array<string>;
+  orders: {
+    order_name: string;
+    order_price: number;
+    order_count: number;
+  }[]; //(string | number)[][];
 };
 
 export async function getReceipt(phone: string): Promise<TReceipt[]> {

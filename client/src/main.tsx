@@ -2,19 +2,29 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
-import Itemize from "./components/Itemize.tsx";
+import PayorItemize from "./components/Payor/PayorItemize.tsx";
 import HomePage from "./components/HomePage/HomePage.tsx";
+import Payor from "./components/Payor/Payor.tsx";
 import Payee from "./components/Payee/Payee.tsx";
+import PayeeItemize from "./components/Payee/PayeeItemize.tsx";
 
 const router = createBrowserRouter([
   { path: "/", element: <HomePage /> },
   {
-    path: "/receipts",
+    path: "/payhost",
+    element: <Payor />,
+  },
+  {
+    path: "/payhost/:phoneNumber",
+    element: <PayorItemize />,
+  },
+  {
+    path: "/host",
     element: <Payee />,
   },
   {
-    path: "/receipts/:phoneNumber",
-    element: <Itemize />,
+    path: "/host/:phone/:lastName",
+    element: <PayeeItemize />,
   },
 ]);
 
