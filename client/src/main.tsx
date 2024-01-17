@@ -23,7 +23,7 @@ const router = createBrowserRouter([
     element: <Payee />,
   },
   {
-    path: "/host/:phone/:lastName",
+    path: "/host/:phoneNumber/:lastName",
     element: <PayeeItemize />,
   },
 ]);

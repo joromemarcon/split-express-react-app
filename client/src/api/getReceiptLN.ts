@@ -9,9 +9,12 @@ export type TReceipt = {
   }[]; //(string | number)[][];
 };
 
-export async function getReceipt(phone: string): Promise<TReceipt[]> {
+export async function getReceiptLN(
+  phone: string,
+  lastName: string
+): Promise<TReceipt[]> {
   const response = await fetch(
-    `http://localhost:5000/receipts/payhost/${phone}`
+    `http://localhost:5000/receipts/host/${phone}/${lastName}`
   );
 
   return response.json();

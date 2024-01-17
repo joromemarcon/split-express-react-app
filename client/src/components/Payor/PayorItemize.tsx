@@ -1,6 +1,6 @@
 import React, { ChangeEvent } from "react";
 import { useState, useEffect } from "react";
-import { getReceipt, TReceipt } from "../../api/getReceipt";
+import { getReceipt } from "../../api/getReceipt";
 import { useParams } from "react-router-dom";
 import NavigationBar from "../Navigation/NavigationBar";
 
@@ -39,10 +39,10 @@ function PayorItemize() {
     return () => {};
   }, []);
 
-  async function retrieveReceiptData() {
-    /*
+  /*
     - Get data from DB using phone number.
-    */
+  */
+  async function retrieveReceiptData() {
     const response = await getReceipt(params.phoneNumber!);
     const formattedPhoneNumber = formatPhoneNumber(response[0].phoneNumber);
     setPayeeName(response[0].customerName);

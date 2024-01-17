@@ -1,6 +1,6 @@
 import React, { ChangeEvent } from "react";
 import { useState, useEffect } from "react";
-import { getReceipt } from "../../api/getReceipt";
+import { getReceiptLN } from "../../api/getReceiptLN";
 import { useParams } from "react-router-dom";
 import NavigationBar from "../Navigation/NavigationBar";
 
@@ -40,7 +40,7 @@ function PayeeItemize() {
     /*
     - Get data from DB using phone number.
     */
-    const response = await getReceipt(params.phoneNumber!);
+    const response = await getReceiptLN(params.phoneNumber!, params.lastName!);
     const formattedPhoneNumber = formatPhoneNumber(response[0].phoneNumber);
     setPayeeName(response[0].customerName);
     setPayeePhone(formattedPhoneNumber);

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { getReceiptLN } from "../../api/getReceiptLN";
 import NavigationBar from "../Navigation/NavigationBar";
 
 function Payee() {
@@ -11,6 +12,8 @@ function Payee() {
   async function handleRetrieveReceipt(e: React.FormEvent) {
     e.preventDefault();
 
+    const response = await getReceiptLN(phone!, lastName!);
+    console.log(response);
     navigate(`/host/${phone}/${lastName}`);
   }
 

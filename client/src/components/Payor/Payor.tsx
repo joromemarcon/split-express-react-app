@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { MouseEvent } from "react";
 import { useNavigate } from "react-router-dom";
+import { getReceipt } from "../../api/getReceipt";
 import { createReceipt } from "../../api/createReceipt";
 import NavigationBar from "../Navigation/NavigationBar";
 import "./payor.css";
@@ -68,10 +69,19 @@ function Payor() {
       );
     }
   }
+
   async function handleRetrieveReceipt(e: React.FormEvent) {
     e.preventDefault();
 
-    navigate(`/payhost/${phone}`);
+    /*
+  - Get data from DB using phone number.
+  */
+    const response = await getReceipt(phone!);
+    if (response.length === 0) {
+      alert("Invalid Phone Number!");
+    } else {
+      navigate(`/payhost/${phone}`);
+    }
   }
 
   return (

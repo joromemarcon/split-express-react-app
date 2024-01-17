@@ -2,13 +2,13 @@
 import { config } from "dotenv";
 config();
 
+//imports
 import express, { Express, Request, Response, query } from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import Receipt from "./models/receipt";
 
 const PORT = 5000;
-
 const app = express();
 
 app.use(cors());
@@ -33,13 +33,30 @@ app.post("/receipts", async (req: Request, res: Response) => {
   res.json(createdReceipt);
 });
 
-app.get("/receipts/:phoneNumber", async (req: Request, res: Response) => {
-  const customerPhoneNumber = req.params.phoneNumber;
-  const listOfReceipts = await Receipt.find({
-    phoneNumber: customerPhoneNumber,
-  });
-  res.json(listOfReceipts);
-});
+app.get(
+  "/receipts/payhost/:phoneNumber",
+  async (req: Request, res: Response) => {
+    const customerPhoneNumber = req.params.phoneNumber;
+    const listOfReceipts = await Receipt.find({
+      phoneNumber: customerPhoneNumber,
+    });
+    res.json(listOfReceipts);
+  }
+);
+
+app.get(
+  "/receipts/host/:phone/:lastName",
+  async (req: Request, res: Response) => {
+    const payeePhoneNumber = req.params.phone;
+    const payeeLastName = req.params.lastName;
+    const returnedReceipt = await Receipt.find({
+      phoneNumber: req.params.phone,
+      customerName: payeeLastName,
+    });
+
+    res.json(returnedReceipt);
+  }
+);
 
 mongoose.connect(process.env.MONGO_URL!).then(() => {
   console.log(`Listening on port ${PORT}`);
