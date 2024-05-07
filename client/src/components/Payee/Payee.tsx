@@ -1,3 +1,12 @@
+/**
+ * The purpose of this file is to capture information
+ * of the person that paid(to be paid)
+ *
+ * The "View Existing Bill" button in homepage routes to this page
+ *
+ * The Payee is able to access the main bill by entering their phoneNumber and full name(non-case sens.)
+ */
+
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getReceiptLN } from "../../api/getReceiptLN";
@@ -12,9 +21,14 @@ function Payee() {
   async function handleRetrieveReceipt(e: React.FormEvent) {
     e.preventDefault();
 
-    const response = await getReceiptLN(phone!, lastName!);
-    console.log(response);
-    navigate(`/host/${phone}/${lastName}`);
+    let lowerCaseLN = lastName.toLowerCase();
+    const response = await getReceiptLN(phone!, lowerCaseLN);
+    if (
+      response[0].phoneNumber === phone &&
+      response[0].customerName === lowerCaseLN
+    ) {
+      navigate(`/host/${phone}/${lowerCaseLN}`);
+    }
   }
 
   return (
@@ -33,7 +47,7 @@ function Payee() {
             />
           </label>
           <label>
-            Last Name:
+            Full Name:
             <input
               id="customer-ln"
               value={lastName}

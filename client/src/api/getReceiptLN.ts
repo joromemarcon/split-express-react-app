@@ -6,7 +6,11 @@ export type TReceipt = {
     order_name: string;
     order_price: number;
     order_count: number;
-  }[]; //(string | number)[][];
+  }[]; //(string | number)[][]
+  peoplePaid: {
+    peer_name: string;
+    items_paid: string[];
+  }[];
 };
 
 export async function getReceiptLN(

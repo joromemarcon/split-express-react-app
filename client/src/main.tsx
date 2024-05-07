@@ -2,11 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
-import PayorItemize from "./components/Payor/PayorItemize.tsx";
 import HomePage from "./components/HomePage/HomePage.tsx";
 import Payor from "./components/Payor/Payor.tsx";
 import Payee from "./components/Payee/Payee.tsx";
-import PayeeItemize from "./components/Payee/PayeeItemize.tsx";
+import PayorMainPage from "./components/Payor/PayorMainPage.tsx";
+import PayeeMainPage from "./components/Payee/PayeeMainPage.tsx";
 
 const router = createBrowserRouter([
   { path: "/", element: <HomePage /> },
@@ -16,7 +16,8 @@ const router = createBrowserRouter([
   },
   {
     path: "/payhost/:phoneNumber",
-    element: <PayorItemize />,
+    element: <PayorMainPage />,
+    // element: <PayorItemize />,
   },
   {
     path: "/host",
@@ -24,7 +25,8 @@ const router = createBrowserRouter([
   },
   {
     path: "/host/:phoneNumber/:lastName",
-    element: <PayeeItemize />,
+    element: <PayeeMainPage />,
+    //element: <PayeeItemize />,
   },
 ]);
 

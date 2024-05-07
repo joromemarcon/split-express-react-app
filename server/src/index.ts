@@ -21,16 +21,18 @@ app.use(express.json());
  * "async" request because newReceipt.save() is an asynchronous method noted as promise
  *
  *********************/
-app.post("/receipts", async (req: Request, res: Response) => {
+app.post("/payhost", async (req: Request, res: Response) => {
   //create new instance of Receipt for db
   //Requires receipt ID
   const newReceipt = new Receipt({
     phoneNumber: req.body.phoneNumber,
-    customerName: req.body.customerName, //req.body.x is from app.tsx
+    customerName: req.body.customerName, //req.body.x is from payor.tsx
     orders: req.body.orders,
+    peoplePaid: req.body.peoplePaid,
   });
   const createdReceipt = await newReceipt.save(); //await since this method is async
   res.json(createdReceipt);
+  res.send("added!");
 });
 
 app.get(
@@ -50,7 +52,7 @@ app.get(
     const payeePhoneNumber = req.params.phone;
     const payeeLastName = req.params.lastName;
     const returnedReceipt = await Receipt.find({
-      phoneNumber: req.params.phone,
+      phoneNumber: payeePhoneNumber,
       customerName: payeeLastName,
     });
 

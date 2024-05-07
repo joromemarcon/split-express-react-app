@@ -1,0 +1,21 @@
+.r-details{
+    border-radius: 25px;
+    border: 2px solid #73AD21;
+    padding: 20px;
+    width: 150px;
+    height: 120px;
+    float: left;
+}
+.r-items-list{
+    border-radius: 25px;
+    border: 2px solid #73AD21;
+    padding: 20px;
+    width: 150px;
+    height: 350px;
+    float: left;
+}
+
+#r-payor-container{
+    display: flex;
+    justify-content: space-around;
+}

@@ -1,0 +1,14 @@
+#r-container{
+    width: 400px;
+    float: left;
+}
+
+#r-transaction{
+    width: 400px;
+    float: left;
+}
+
+#r-parent-container{
+    display: flex;
+    justify-content: space-around;
+}
